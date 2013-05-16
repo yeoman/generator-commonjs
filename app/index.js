@@ -110,8 +110,6 @@ CommonJSGenerator.prototype.projectfiles = function projectfiles() {
 
   this.template('README.md');
   this.template('Gruntfile.js');
-  this.template('_bower.json', 'bower.json');
   this.template('_package.json', 'package.json');
-  this.template('bowerrc', '.bowerrc');
   this.copy('CONTRIBUTING.md', 'CONTRIBUTING.md');
 };
