@@ -6,29 +6,29 @@ module.exports = function(grunt) {
   grunt.initConfig({
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
-    banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-      '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-      '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-      '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-      ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+    banner: '/*! <%%= pkg.name %> - v<%%= pkg.version %> - ' +
+      '<%%= grunt.template.today("yyyy-mm-dd") %>\n' +
+      '<%%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
+      '* Copyright (c) <%%= grunt.template.today("yyyy") %> <%%= pkg.author.name %>;' +
+      ' Licensed <%= props.license %> */\n',
     // Task configuration.
     concat: {
       options: {
-        banner: '<%= banner %>',
+        banner: '<%%= banner %>',
         stripBanners: true
       },
       dist: {
-        src: ['lib/<%= pkg.name %>.js'],
-        dest: 'dist/<%= pkg.name %>.js'
+        src: ['src/<%%= pkg.name %>.js'],
+        dest: 'dist/<%%= pkg.name %>.js'
       },
     },
     uglify: {
       options: {
-        banner: '<%= banner %>'
+        banner: '<%%= banner %>'
       },
       dist: {
-        src: '<%= concat.dist.dest %>',
-        dest: 'dist/<%= pkg.name %>.min.js'
+        src: '<%%= concat.dist.dest %>',
+        dest: 'dist/<%%= pkg.name %>.min.js'
       },
     },
     nodeunit: {
@@ -43,9 +43,9 @@ module.exports = function(grunt) {
       },
       lib: {
         options: {
-          jshintrc: 'lib/.jshintrc'
+          jshintrc: 'src/.jshintrc'
         },
-        src: ['lib/**/*.js']
+        src: ['src/**/*.js']
       },
       test: {
         src: ['test/**/*.js']
@@ -53,15 +53,15 @@ module.exports = function(grunt) {
     },
     watch: {
       gruntfile: {
-        files: '<%= jshint.gruntfile.src %>',
+        files: '<%%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
       },
       lib: {
-        files: '<%= jshint.lib.src %>',
+        files: '<%%= jshint.lib.src %>',
         tasks: ['jshint:lib', 'nodeunit']
       },
       test: {
-        files: '<%= jshint.test.src %>',
+        files: '<%%= jshint.test.src %>',
         tasks: ['jshint:test', 'nodeunit']
       },
     },
