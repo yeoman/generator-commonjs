@@ -60,7 +60,7 @@ CommonJSGenerator.prototype.askFor = function askFor() {
   }, {
     name: 'npm_test',
     'default': 'grunt nodeunit'
-  },];
+  }];
 
   var nameToMessage = function (name) {
     return name.split('_').map(
