@@ -1,22 +1,20 @@
 {
   "name": "<%= slugname %>",
-  "version": "<%= props.version %>",
-  "description": "<%= props.title %>",
+  "version": "0.0.0",
+  "description": "<%= props.description %>",
   "keywords": [
     "jquery-plugin"
   ],
-  "homepage": "https://github.com/<%= props.github_username %>/<%= slugname %>",
-  <% if (props.bugs) { %>
-  "bugs": "<%= props.bugs %>",
-  <% } %>
+  "homepage": "<%= props.homepage %>",
+  "bugs": "<%= repoUrl %>/issues",
   "author": {
-    "name": "<%= props.author_name %>",
-    "email": "<%= props.author_email %>",
-    "url": "https://github.com/<%= props.github_username %>"
+    "name": "<%= props.authorName %>",
+    "email": "<%= props.authorEmail %>"<% if (props.authorUrl) { %>,
+    "url": "<%= props.authorUrl %>"<% } %>
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<%= props.github_username %>/<%= slugname %>.git"
+    "url": "<%= repoUrl %>"
   },
   "licenses": [
     {
@@ -24,10 +22,10 @@
     }
   ],
   "devDependencies": {
-    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-jshint": "~0.2.0",
     "grunt-contrib-qunit": "~0.1.1",
     "grunt-contrib-concat": "~0.1.2",
-    "grunt-contrib-uglify": "~0.1.1",
+    "grunt-contrib-uglify": "~0.2.2",
     "grunt-contrib-watch": "~0.2.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-nodeunit": "~0.1.2"
