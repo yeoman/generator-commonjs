@@ -1,4 +1,4 @@
-# <%= props.title || props.name %>
+# <%= props.name %>
 
 <%= props.description %>
 
@@ -14,8 +14,8 @@ var <%= slugname %> = require('<%= slugname %>');
 ### In the browser
 Download the [production version][min] or the [development version][max].
 
-[min]: https://raw.github.com/<%= props.github_username %>/<%= props.github_repo %>/master/dist/<%= slugname %>.min.js
-[max]: https://raw.github.com/<%= props.github_username %>/<%= props.github_repo %>/master/dist/<%= slugname %>.js
+[min]: https://raw.github.com/<%= props.githubUsername %>/<%= slugname %>/master/dist/<%= slugname %>.min.js
+[max]: https://raw.github.com/<%= props.githubUsername %>/<%= slugname %>/master/dist/<%= slugname %>.js
 
 In your web page:
 
@@ -54,4 +54,4 @@ _(Nothing yet)_
 
 ## License
  
- Copyright (c) <%= currentYear %> <%= props.author_name %>. Licensed under the <%= props.license %> license.
+ Copyright (c) <%= currentYear %> <%= props.authorName %>. Licensed under the <%= props.license %> license.
