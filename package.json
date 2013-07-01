@@ -1,6 +1,6 @@
 {
   "name": "generator-commonjs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A CommonJS generator for Yeoman",
   "keywords": [
     "yeoman-generator",
@@ -22,7 +22,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.12.0"
+    "yeoman-generator": "~0.12.2"
   },
   "devDependencies": {
     "mocha": "~1.9.0"
