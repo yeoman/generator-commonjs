@@ -1,6 +1,8 @@
 'use strict';
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
+  // Show elapsed time at the end.
+  require('time-grunt')(grunt);
 
   // Project configuration.
   grunt.initConfig({
@@ -76,5 +78,4 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'nodeunit', 'concat', 'uglify']);
-
 };
