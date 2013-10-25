@@ -40,15 +40,15 @@ module.exports = function (grunt) {
     },
     jshint: {
       options: {
-        jshintrc: '.jshintrc'
+        jshintrc: '.jshintrc',
+        reporter: require('jshint-stylish')
       },
       gruntfile: {
         src: 'Gruntfile.js'
       },
       lib: {
         options: {
-          jshintrc: 'src/.jshintrc',
-          reporter: require('jshint-stylish')
+          jshintrc: 'src/.jshintrc'
         },
         src: ['src/**/*.js']
       },
