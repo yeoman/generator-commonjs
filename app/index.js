@@ -69,13 +69,13 @@ CommonJSGenerator.prototype.askFor = function askFor() {
   }.bind(this));
 };
 
-CommonJSGenerator.prototype.src = function app() {
+CommonJSGenerator.prototype.source = function source() {
   this.mkdir('src');
   this.copy('src/jshintrc', 'src/.jshintrc');
   this.template('src/name.js', 'src/' + this.slugname + '.js');
 };
 
-CommonJSGenerator.prototype.test = function app() {
+CommonJSGenerator.prototype.test = function test() {
   this.mkdir('test');
   this.template('test/name_test.js', 'test/' + this.slugname + '_test.js');
 };
