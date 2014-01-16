@@ -4,10 +4,9 @@
   "description": "A CommonJS generator for Yeoman",
   "keywords": [
     "yeoman-generator",
-    "scaffold"
+    "scaffold",
+    "commonjs"
   ],
-  "homepage": "https://github.com/yeoman/generator-commonjs",
-  "bugs": "https://github.com/yeoman/generator-commonjs/issues",
   "author": {
     "name": "Addy Osmani",
     "email": "addyosmani@gmail.com",
@@ -22,16 +21,16 @@
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.14.0"
+    "yeoman-generator": "~0.16.0"
   },
   "devDependencies": {
-    "mocha": "~1.12.0"
+    "mocha": "*"
   },
   "peerDependencies": {
-    "yo": ">=1.0.0-rc.1.1"
+    "yo": ">=1.0.0"
   },
   "engines": {
-    "node": ">=0.8.0",
+    "node": ">=0.10.0",
     "npm": ">=1.2.10"
   },
   "files": [
