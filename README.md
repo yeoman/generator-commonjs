@@ -1,4 +1,4 @@
-# CommonJS Generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-commonjs.png?branch=master)](https://travis-ci.org/yeoman/generator-commonjs)
+# CommonJS Generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-commonjs.svg?branch=master)](https://travis-ci.org/yeoman/generator-commonjs)
 
 > Create a CommonJS module with [Yeoman][], including nodeunit unit tests.
 
