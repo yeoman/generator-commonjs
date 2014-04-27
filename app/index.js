@@ -1,92 +1,89 @@
 'use strict';
-var util = require('util');
-var path = require('path');
 var yeoman = require('yeoman-generator');
 
+var JasmineGenerator = module.exports = yeoman.generators.Base.extend({
 
-var CommonJSGenerator = module.exports = function CommonJSGenerator(args, options) {
-  yeoman.generators.Base.apply(this, arguments);
+  initializing: function () {
+    this.pkg = require('../package.json');
+  },
 
-  this.on('end', function () {
-    this.installDependencies({ skipInstall: options['skip-install'] });
-  });
+  welcome: function () {
+    // welcome message
+    this.log(this.yeoman);
+  },
 
-  this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
-};
+  prompting: function () {
+    var cb = this.async();
 
-util.inherits(CommonJSGenerator, yeoman.generators.NamedBase);
+    var prompts = [{
+      name: 'name',
+      message: 'Module Name'
+    }, {
+      name: 'description',
+      message: 'Description',
+      default: 'The best commonjs module ever.'
+    }, {
+      name: 'homepage',
+      message: 'Homepage'
+    }, {
+      name: 'license',
+      message: 'License',
+      default: 'MIT'
+    }, {
+      name: 'githubUsername',
+      message: 'GitHub username'
+    }, {
+      name: 'authorName',
+      message: 'Author\'s Name'
+    }, {
+      name: 'authorEmail',
+      message: 'Author\'s Email'
+    }, {
+      name: 'authorUrl',
+      message: 'Author\'s Homepage'
+    }];
 
-CommonJSGenerator.prototype.welcome = function welcome() {
-  // welcome message
-  console.log(this.yeoman);
-};
+    this.currentYear = (new Date()).getFullYear();
 
-CommonJSGenerator.prototype.askFor = function askFor() {
-  var cb = this.async();
+    this.prompt(prompts, function (props) {
+      this.slugname = this._.slugify(props.name);
 
-  var prompts = [{
-    name: 'name',
-    message: 'Module Name'
-  }, {
-    name: 'description',
-    message: 'Description',
-    default: 'The best commonjs module ever.'
-  }, {
-    name: 'homepage',
-    message: 'Homepage'
-  }, {
-    name: 'license',
-    message: 'License',
-    default: 'MIT'
-  }, {
-    name: 'githubUsername',
-    message: 'GitHub username'
-  }, {
-    name: 'authorName',
-    message: 'Author\'s Name'
-  }, {
-    name: 'authorEmail',
-    message: 'Author\'s Email'
-  }, {
-    name: 'authorUrl',
-    message: 'Author\'s Homepage'
-  }];
+      this.repoUrl = 'https://github.com/' + props.githubUsername + '/' + this.slugname;
 
-  this.currentYear = (new Date()).getFullYear();
+      if (!props.homepage) {
+        props.homepage = this.repoUrl;
+      }
 
-  this.prompt(prompts, function (props) {
-    this.slugname = this._.slugify(props.name);
+      this.props = props;
 
-    this.repoUrl = 'https://github.com/' + props.githubUsername + '/' + this.slugname;
+      cb();
+    }.bind(this));
+  },
 
-    if (!props.homepage) {
-      props.homepage = this.repoUrl;
-    }
+  source: function () {
+    this.mkdir('src');
+    this.copy('src/jshintrc', 'src/.jshintrc');
+    this.template('src/name.js', 'src/' + this.slugname + '.js');
+  },
 
-    this.props = props;
+  test: function () {
+    this.mkdir('test');
+    this.template('test/name_test.js', 'test/' + this.slugname + '_test.js');
+  },
 
-    cb();
-  }.bind(this));
-};
+  projectfiles: function () {
+    this.copy('editorconfig', '.editorconfig');
+    this.copy('jshintrc', '.jshintrc');
+    this.copy('gitignore', '.gitignore');
 
-CommonJSGenerator.prototype.source = function source() {
-  this.mkdir('src');
-  this.copy('src/jshintrc', 'src/.jshintrc');
-  this.template('src/name.js', 'src/' + this.slugname + '.js');
-};
+    this.template('README.md');
+    this.template('Gruntfile.js');
+    this.template('_package.json', 'package.json');
+    this.copy('CONTRIBUTING.md', 'CONTRIBUTING.md');
+  },
 
-CommonJSGenerator.prototype.test = function test() {
-  this.mkdir('test');
-  this.template('test/name_test.js', 'test/' + this.slugname + '_test.js');
-};
+  install: function () {
+    this.installDependencies({ skipInstall: this.options['skip-install'] });
+  }
 
-CommonJSGenerator.prototype.projectfiles = function projectfiles() {
-  this.copy('editorconfig', '.editorconfig');
-  this.copy('jshintrc', '.jshintrc');
-  this.copy('gitignore', '.gitignore');
-
-  this.template('README.md');
-  this.template('Gruntfile.js');
-  this.template('_package.json', 'package.json');
-  this.copy('CONTRIBUTING.md', 'CONTRIBUTING.md');
-};
+});
