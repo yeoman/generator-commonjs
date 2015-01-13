@@ -1,6 +1,6 @@
 {
   "name": "generator-commonjs",
-  "version": "0.0.8",
+  "version": "1.0.0",
   "description": "Generate a CommonJS module",
   "keywords": [
     "yeoman-generator",
