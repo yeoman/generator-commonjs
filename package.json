@@ -1,44 +1,31 @@
 {
   "name": "generator-commonjs",
   "version": "0.0.8",
-  "description": "A CommonJS generator for Yeoman",
+  "description": "Generate a CommonJS module",
   "keywords": [
     "yeoman-generator",
     "scaffold",
-    "commonjs"
+    "generate",
+    "commonjs",
+    "module"
   ],
-  "author": {
-    "name": "Addy Osmani",
-    "email": "addyosmani@gmail.com",
-    "url": "https://github.com/addyosmani"
-  },
+  "author": "Yeoman team",
   "main": "app/index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yeoman/generator-commonjs.git"
-  },
+  "repository": "yeoman/generator-commonjs",
   "scripts": {
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.16.0"
+    "yeoman-generator": "^0.18.6"
   },
   "devDependencies": {
     "mocha": "*"
   },
-  "peerDependencies": {
-    "yo": ">=1.0.0"
-  },
   "engines": {
-    "node": ">=0.10.0",
-    "npm": ">=1.2.10"
+    "node": ">=0.10.0"
   },
   "files": [
     "app"
   ],
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ]
+  "license": "MIT"
 }

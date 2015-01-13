@@ -1,14 +1,12 @@
 'use strict';
 var yeoman = require('yeoman-generator');
 
-var JasmineGenerator = module.exports = yeoman.generators.Base.extend({
-
+module.exports = yeoman.generators.Base.extend({
   initializing: function () {
     this.pkg = require('../package.json');
   },
 
   welcome: function () {
-    // welcome message
     this.log(this.yeoman);
   },
 
@@ -47,6 +45,7 @@ var JasmineGenerator = module.exports = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function (props) {
       this.slugname = this._.slugify(props.name);
+      this.camelname = this._.camelize(props.name);
 
       this.repoUrl = 'https://github.com/' + props.githubUsername + '/' + this.slugname;
 
@@ -75,15 +74,16 @@ var JasmineGenerator = module.exports = yeoman.generators.Base.extend({
     this.copy('editorconfig', '.editorconfig');
     this.copy('jshintrc', '.jshintrc');
     this.copy('gitignore', '.gitignore');
-
-    this.template('README.md');
+    this.template('readme.md');
     this.template('Gruntfile.js');
     this.template('_package.json', 'package.json');
-    this.copy('CONTRIBUTING.md', 'CONTRIBUTING.md');
+    this.copy('contributing.md', 'contributing.md');
   },
 
   install: function () {
-    this.installDependencies({ skipInstall: this.options['skip-install'] });
+    this.installDependencies({
+      bower: false,
+      skipInstall: this.options['skip-install']
+    });
   }
-
 });

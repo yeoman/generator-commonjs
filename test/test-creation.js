@@ -3,12 +3,12 @@
 var path = require('path');
 var helpers = require('yeoman-generator').test;
 
-
 describe('commonjs generator', function () {
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
-        return done(err);
+        done(err);
+        return;
       }
 
       this.app = helpers.createGenerator('commonjs:app', [
@@ -25,8 +25,6 @@ describe('commonjs generator', function () {
       '.editorconfig',
       'package.json'
     ];
-
-      //['package.json', /"name": "mymodule"/]
 
     helpers.mockPrompt(this.app, {
       'name': 'mymodule',
