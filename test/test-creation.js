@@ -23,8 +23,10 @@ describe('commonjs generator', function () {
     var expected = [
       '.jshintrc',
       '.editorconfig',
-      ['package.json', /"name": "mymodule"/]
+      'package.json'
     ];
+
+      //['package.json', /"name": "mymodule"/]
 
     helpers.mockPrompt(this.app, {
       'name': 'mymodule',
@@ -42,7 +44,8 @@ describe('commonjs generator', function () {
     });
 
     this.app.run({}, function () {
-      helpers.assertFiles(expected);
+      helpers.assertFile(expected);
+      helpers.assertFileContent('package.json', /"name": "mymodule"/);
       done();
     });
   });
