@@ -1,4 +1,4 @@
-/*global describe, beforeEach, it*/
+/*global describe, beforeEach, it */
 'use strict';
 var path = require('path');
 var helpers = require('yeoman-generator').test;
@@ -41,7 +41,7 @@ describe('commonjs generator', function () {
       'npm_test': 'grunt nodeunit'
     });
 
-    this.app.run({}, function () {
+    this.app.run(function () {
       helpers.assertFile(expected);
       helpers.assertFileContent('package.json', /"name": "mymodule"/);
       done();
